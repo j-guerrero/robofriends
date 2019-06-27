@@ -1,0 +1,81 @@
+import { 
+	CHANGE_SEARCH_FIELD,
+	REQUEST_ROBOTS_PENDING,
+	REQUEST_ROBOTS_SUCCESS,
+	REQUEST_ROBOTS_FAIL
+} from '../constants.js';
+
+import * as reducers from '../reducers';
+
+describe('searchRobots', () =>{
+
+	const initialStateSearch = {
+		searchField: ''
+	}
+
+	it('should return the initial state', () =>{
+		expect(reducers.searchRobots(undefined,{})).toEqual({ searchField: ''})
+	})
+
+	it('should handle CHANGE_SEARCH_FIELD', () =>{
+		expect(reducers.searchRobots(initialStateSearch, {
+			type: CHANGE_SEARCH_FIELD,
+			payload: 'abc'
+		})).toEqual({
+			searchField: 'abc'
+		})
+	})
+})
+
+
+describe('requestRobots', () => {
+	const initialStateRobots = {
+		isPending: false,
+		robots: [],
+		error: ''
+	}
+
+	it('should return the initial state', () =>{
+		expect(reducers.requestRobots(undefined,{})).toEqual(initialStateRobots)
+	})
+
+	it('should handle REQUEST_ROBOTS_PENDING actions', () => {
+		expect(reducers.requestRobots(initialStateRobots, {
+			type: REQUEST_ROBOTS_PENDING
+		})).toEqual({
+			robots: [],
+			isPending: true,
+			error: ''
+		})
+	})
+
+	it('should handle REQUEST_ROBOTS_SUCCESS actions', () => {
+	expect(reducers.requestRobots(initialStateRobots, {
+		type: REQUEST_ROBOTS_SUCCESS,
+		payload: [{
+			id: '123',
+			name: 'test',
+			email: 'test@test.com'
+		}]
+	})).toEqual({
+		robots: [{
+			id: '123',
+			name: 'test',
+			email: 'test@test.com'
+		}],
+		isPending: false,
+		error: ''
+		})
+	})
+
+	it('should handle REQUEST_ROBOTS_FAIL actions', () => {
+	expect(reducers.requestRobots(initialStateRobots, {
+		type: REQUEST_ROBOTS_FAIL,
+		payload: 'Error!'
+	})).toEqual({
+		robots: [],
+		error: 'Error!',
+		isPending: false
+		})
+	})
+})
