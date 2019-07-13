@@ -13,9 +13,9 @@ jobs:
      - checkout
      - run: echo "Double Trouble"
 
-     workflows:
-        version: 2
-        dan_trish:
-          jobs:
-            - dan
-            - trish
+  workflows:
+    version: 2
+    dan_trish:
+      jobs:
+        - dan
+        - trish
