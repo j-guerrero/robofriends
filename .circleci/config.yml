@@ -1,12 +1,12 @@
 version: 2
 jobs:
-  build:
+  dan:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
       - checkout
       - run: echo "A first hello"
-  dan:
+  bob:
     docker:
       - image: circleci/ruby:2.4.1
     steps:
@@ -14,7 +14,7 @@ jobs:
       - run: echo "test#2"
 workflows:
   version: 2
-  build_and_test:
+  dan_and_bob:
     jobs:
-      - build
       - dan
+      - bob
