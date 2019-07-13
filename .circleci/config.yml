@@ -12,7 +12,6 @@ jobs:
     steps:
       - checkout
       - run: echo "Double Trouble"
-
 workflows:
   version: 2
   dan_trish:
