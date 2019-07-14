@@ -6,10 +6,10 @@ import thunkMiddleware from 'redux-thunk';
 import './index.css';
 import App from './containers/App.js';
 import * as serviceWorker from './serviceWorker';
-import { searchRobots, requestRobots } from './reducers.js';
+import { searchRobots, requestRobots, toggleModal } from './reducers.js';
 import 'tachyons';
 
-const rootReducer = combineReducers({ searchRobots, requestRobots})
+const rootReducer = combineReducers({ searchRobots, requestRobots, toggleModal})
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 ReactDOM.render(

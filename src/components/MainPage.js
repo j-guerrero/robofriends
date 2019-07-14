@@ -12,6 +12,7 @@ class MainPage extends Component {
 
 	componentDidMount(){
 		this.props.onRequestRobots();
+		this.props.toggleModal();
 	}
 
 	filterRobots = () => {
@@ -31,7 +32,7 @@ class MainPage extends Component {
 				<Scroll>
 				{ isPending ? <h1>Loading</h1> :
 					<ErrorBoundry>
-							<CardList robots={this.filterRobots()}/>
+							<CardList robots={this.filterRobots()} />
 					</ErrorBoundry>
 				}
 				</Scroll>

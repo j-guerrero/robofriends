@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setSearchField, requestRobots } from '../actions.js';
 
 import MainPage from '../components/MainPage';
+import Modal from '../components/Modal/Modal.js';
 
 import './App.css';
 

@@ -2,7 +2,9 @@ import {
 	CHANGE_SEARCH_FIELD,
 	REQUEST_ROBOTS_PENDING,
 	REQUEST_ROBOTS_SUCCESS,
-	REQUEST_ROBOTS_FAIL
+	REQUEST_ROBOTS_FAIL,
+	OPEN_MODAL,
+	CLOSE_MODAL
 } from './constants.js';
 
 
@@ -35,5 +37,22 @@ export const requestRobots = (state=initialStateRobots, action={}) =>{
 			return Object.assign({}, state, { error: action.payload, isPending: false});
 		default:
 			return state;
+	}
+}
+
+const initialStateModal = {
+	modalProps:{}
+}
+
+export const toggleModal = (state=initialStateModal, action={}) => {
+	switch(action.type){
+		case OPEN_MODAL:
+			return{
+				modalProps: action.modalProps
+			}
+		case CLOSE_MODAL:
+			return initialStateModal
+		default:
+			return state
 	}
 }

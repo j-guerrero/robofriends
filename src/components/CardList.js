@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from './Card.js'
+import Modal from "./Modal/Modal.js"
 
-const CardList = ({ robots }) =>{
+const CardList = ({ robots,toggleModal }) =>{
 	
 	return (
 		<div>
