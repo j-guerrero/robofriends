@@ -32,7 +32,7 @@ class MainPage extends Component {
 				{ isPending ? <h1>Loading</h1> :
 					<ErrorBoundry>
 							<CardList robots={this.filterRobots()}/>
-						</ErrorBoundry>
+					</ErrorBoundry>
 				}
 				</Scroll>
 			</div>
