@@ -41,14 +41,15 @@ export const requestRobots = (state=initialStateRobots, action={}) =>{
 }
 
 const initialStateModal = {
-	modalProps:{}
+	modalProps:{},
+	isModalOpen:false
 }
 
 export const toggleModal = (state=initialStateModal, action={}) => {
 	switch(action.type){
 		case OPEN_MODAL:
 			return{
-				modalProps: action.modalProps
+				isModalOpen: true
 			}
 		case CLOSE_MODAL:
 			return initialStateModal

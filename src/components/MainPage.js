@@ -5,6 +5,7 @@ import SearchBox from '../components/SearchBox.js';
 import Scroll from '../components/Scroll';
 import ErrorBoundry from '../components/ErrorBoundry.js';
 import Header from '../components/Header.js';
+import Modal from '../components/Modal/Modal.js';
 
 import './MainPage.css';
 
@@ -12,7 +13,6 @@ class MainPage extends Component {
 
 	componentDidMount(){
 		this.props.onRequestRobots();
-		this.props.toggleModal();
 	}
 
 	filterRobots = () => {
@@ -23,19 +23,24 @@ class MainPage extends Component {
 
 
 	render(){
-		const { onSearchChange, isPending } = this.props;
+		const { onSearchChange, isPending, isModalOpen } = this.props;
 		
 		return (
-			<div className ='tc'>
-				<Header />
-				<SearchBox searchChange={onSearchChange}/>
-				<Scroll>
-				{ isPending ? <h1>Loading</h1> :
-					<ErrorBoundry>
-							<CardList robots={this.filterRobots()} />
-					</ErrorBoundry>
-				}
-				</Scroll>
+			<div>
+				<div className ='tc'>
+					<Header />
+					<SearchBox searchChange={onSearchChange}/>
+					<Scroll>
+					{ isPending ? <h1>Loading</h1> :
+						<ErrorBoundry>
+								<CardList robots={this.filterRobots()} />
+								{isModalOpen && 
+						          <Modal isModalOpen={isModalOpen} toggleModal={this.props.toggleModal} />
+						        }
+						</ErrorBoundry>
+					}
+					</Scroll>
+				</div>
 			</div>
 			);
 		}
