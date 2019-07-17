@@ -40,6 +40,8 @@ export const requestRobots = (state=initialStateRobots, action={}) =>{
 	}
 }
 
+
+//WIP
 const initialStateModal = {
 	modalProps:{},
 	isModalOpen:false
